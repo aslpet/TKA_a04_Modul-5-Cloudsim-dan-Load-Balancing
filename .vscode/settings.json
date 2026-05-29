@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "CloudSim_Task/jars/cloudsim-3.0.3.jar",
+        "CloudSim_Task/jars/jswarm-pso_2_08.jar"
+    ]
+}
