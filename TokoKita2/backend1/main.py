@@ -29,6 +29,28 @@ def products():
     return jsonify(PRODUCTS)
 
 
+# soal 3
+@app.route("/catalogue", methods=["GET"])
+def catalogue():
+    """Ringan. Hanya mengembalikan JSON data produk."""
+    return jsonify(PRODUCTS)
+
+@app.route("/checkout", methods=["POST"])
+def checkout():
+    """Sangat Berat. Lakukan perulangan komputasi matematika kompleks."""
+    primes = []
+    for possiblePrime in range(2, 10000):
+        is_prime = True
+        for num in range(2, int(possiblePrime ** 0.5) + 1):
+            if possiblePrime % num == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(possiblePrime)
+            
+    return jsonify({"status": "success", "message": "Checkout complete"})
+
+
 if __name__ == "__main__":
     # NOTE: 0.0.0.0 is required inside Docker containers for inter-container
     # communication. This is NOT exposed directly to the public internet;

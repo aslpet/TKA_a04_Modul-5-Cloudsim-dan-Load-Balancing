@@ -1,11 +1,11 @@
-"""Backend Server 1 for TokoKita e-commerce application."""
+"""Backend Server 2 for TokoKita e-commerce application."""
 
 import socket
 from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-# Hardcoded product catalog data
+# Hardcoded product catalog data (same as Server 1)
 PRODUCTS = [
     {"id": 1, "name": "Laptop", "price": 12000000},
     {"id": 2, "name": "Mouse", "price": 150000},
@@ -18,7 +18,7 @@ def index():
     """Return server identity with hostname."""
     hostname = socket.gethostname()
     return jsonify({
-        "server": "Server 1 - TokoKita",
+        "server": "Server 2 - TokoKita",
         "hostname": hostname
     })
 
@@ -27,6 +27,28 @@ def index():
 def products():
     """Return the product catalog."""
     return jsonify(PRODUCTS)
+
+
+# soal 3
+@app.route("/catalogue", methods=["GET"])
+def catalogue():
+    """Ringan. Hanya mengembalikan JSON data produk."""
+    return jsonify(PRODUCTS)
+
+@app.route("/checkout", methods=["POST"])
+def checkout():
+    """Sangat Berat. Lakukan perulangan komputasi matematika kompleks."""
+    primes = []
+    for possiblePrime in range(2, 10000):
+        is_prime = True
+        for num in range(2, int(possiblePrime ** 0.5) + 1):
+            if possiblePrime % num == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(possiblePrime)
+            
+    return jsonify({"status": "success", "message": "Checkout complete"})
 
 
 if __name__ == "__main__":
